@@ -1,0 +1,19 @@
+.fb-btn {
+  background-color: #3b5998;
+  color: white;
+  border: 2px solid #3b5998;
+}
+.gmail-btn {
+  border: 2px solid #f1584d;
+}
+.sign-in-btn {
+  background-color: #fbb03b;
+  border: 2px solid #fbb03b;
+  margin-top: 10px;
+}
+.forgot-pass {
+  padding-bottom: 16px;
+}
+.sign-up-div {
+  margin-bottom: 6px;
+}

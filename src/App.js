@@ -1,24 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import LogIn from "./components/logIn/LogIn";
+import SignUp from "./components/signUp/SignUp";
+import { useState } from "react";
 
 function App() {
+  const [hidden, setHidden] = useState(true);
+  const showHidePass = (event) => {
+    setHidden(!hidden);
+    event.preventDefault();
+  };
+  const [user, setUser] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    sendNotifications: false,
+  });
+
+  const handleBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    if (field === "sendNotifications") {
+      console.log(12345);
+      user[field] = !user.sendNotifications;
+      setUser(user);
+    } else {
+      user[field] = value;
+    }
+    setUser(user);
+  };
+  const handleSubmit = (e) => {
+    console.log(JSON.stringify(user));
+    e.preventDefault();
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SignUp
+        password={user.password}
+        handleBlur={handleBlur}
+        hidden={hidden}
+        showHidePass={showHidePass}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }
